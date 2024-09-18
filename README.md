@@ -33,20 +33,47 @@ This project is a full-stack web application developed using React on the front-
 ### Running the Back-end
 
 1. Clone the back-end repository.
-2. Install the necessary dependencies:
+2. Create a .env file in the root directory and add the environment variable for the DATABAE_URL:
+   ```bash
+   DATABASE_URL="postgresql://postgres:password@timescaledb:5432/mydatabase?schema=public"
+   ```
+3. Make sure you already have Postgresql and put the the exact root password and database_name into .env file inside place holder my password and mydatabase or leave it as it is in case you want to go with Docker option
+4. Install the necessary dependencies:
 
    ```bash
    npm install
    ```
 
-3. Start the back-end server in development mode:
+5. Start the back-end server in development mode:
 
    ```bash
    npm run start:dev
    ```
 
+### Running with Docker
+
+This project includes Docker configuration files to simplify the setup process.
+
+1. Build the Docker images:
+
+   ```bash
+   sudo docker-compose build
+   ```
+
+   Note: The build process may take some time initially.
+
+2. Start the Docker containers:
+
+   ```bash
+   sudo docker-compose up
+   ```
+
+3. Run database migrations:
+
+   ```bash
+   sudo docker compose exec nest-app npm run prisma:migrate:dev
+   ```
+
 ### Requirements
 
 - **Node.js**: Ensure that your Node.js version is greater than 20.
-
-Happy coding!
